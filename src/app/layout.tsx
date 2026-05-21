@@ -1,4 +1,4 @@
-<html suppressHydrationWarning>
+<html lang="mn" className="dark" suppressHydrationWarning>
 import type { Metadata, Viewport } from "next";
 
 import { AmbientStage } from "@/components/effects/ambient-stage";
