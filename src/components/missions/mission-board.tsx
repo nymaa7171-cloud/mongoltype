@@ -75,8 +75,9 @@ export function MissionBoard({ compact = false }: { compact?: boolean }) {
     }
 
     async function load() {
-// @ts-expect-error
+      // @ts-expect-error: Bypassing type check for Supabase RPC parameter
       await supabase.rpc("seed_daily_missions", { user_id_input: user!.id });
+      
       const today = new Date().toISOString().slice(0, 10);
       const { data } = await supabase
         .from("daily_missions")
