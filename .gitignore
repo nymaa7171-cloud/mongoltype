@@ -1,0 +1,13 @@
+node_modules
+.next
+out
+.open-next
+.wrangler
+.vercel
+.env
+.env*.local
+cloudflare-env.d.ts
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*

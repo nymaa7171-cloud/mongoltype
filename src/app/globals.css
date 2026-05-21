@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --background: 228 33% 4%;
+  --foreground: 160 44% 96%;
+  --card: 228 24% 7%;
+  --card-foreground: 160 44% 96%;
+  --primary: 148 100% 66%;
+  --primary-foreground: 220 34% 5%;
+  --secondary: 202 100% 63%;
+  --secondary-foreground: 220 34% 5%;
+  --muted: 226 18% 14%;
+  --muted-foreground: 220 10% 68%;
+  --accent: 261 100% 77%;
+  --accent-foreground: 220 34% 5%;
+  --destructive: 0 82% 62%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 225 18% 18%;
+  --input: 225 18% 18%;
+  --ring: 148 100% 66%;
+  --radius: 0.5rem;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  min-height: 100%;
+  background: #05060a;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(84, 255, 159, 0.1), transparent 28rem),
+    radial-gradient(circle at 78% 8%, rgba(68, 199, 255, 0.12), transparent 30rem),
+    linear-gradient(180deg, #05060a 0%, #080a11 42%, #040509 100%);
+  color: hsl(var(--foreground));
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  text-rendering: geometricPrecision;
+}
+
+::selection {
+  background: rgba(84, 255, 159, 0.25);
+  color: #f5fff9;
+}
+
+@layer base {
+  a {
+    @apply text-inherit no-underline;
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply border border-white/10 bg-white/[0.055] shadow-2xl shadow-black/40 backdrop-blur-2xl;
+  }
+
+  .grid-mask {
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent 82%);
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-neon-green via-neon-blue to-neon-purple bg-clip-text text-transparent;
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-green/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .typing-shadow {
+    text-shadow: 0 0 22px rgba(84, 255, 159, 0.24);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

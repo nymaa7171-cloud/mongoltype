@@ -1,0 +1,6 @@
+name = "mongoltype"
+pages_build_output_dir = "out"
+compatibility_date = "2026-05-21"
+
+[vars]
+NEXT_PUBLIC_SITE_URL = "https://mongoltype.pages.dev"
