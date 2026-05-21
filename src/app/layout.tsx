@@ -1,6 +1,4 @@
-<html lang="mn" className="dark" suppressHydrationWarning>
 import type { Metadata, Viewport } from "next";
-
 import { AmbientStage } from "@/components/effects/ambient-stage";
 import { Providers } from "@/app/providers";
 import "./globals.css";
@@ -11,7 +9,7 @@ export const metadata: Metadata = {
     "A realtime competitive typing platform for improving Mongolian Cyrillic keyboard speed, accuracy, rhythm, and consistency.",
   applicationName: "MongolType",
   keywords: ["Mongolian", "Cyrillic", "typing", "keyboard", "realtime", "race"],
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://mongoltype.pages.dev")
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://mongoltype.pages.dev"),
 };
 
 export const viewport: Viewport = {
@@ -19,12 +17,16 @@ export const viewport: Viewport = {
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1
+  maximumScale: 1,
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="mn" className="dark">
+    <html lang="mn" className="dark" suppressHydrationWarning>
       <body>
         <AmbientStage />
         <Providers>{children}</Providers>
