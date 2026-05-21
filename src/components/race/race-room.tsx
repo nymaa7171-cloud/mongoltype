@@ -83,9 +83,9 @@ export function RaceRoom() {
         return;
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const { data, error } = await supabase
         .from("race_players")
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .upsert(playerPayload as any, { onConflict: "race_id,user_id" })
         .select("*");
 
