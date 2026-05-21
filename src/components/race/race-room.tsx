@@ -51,7 +51,6 @@ export function RaceRoom() {
     [activeRace?.prompt, draftPrompt, localInput, startedAt]
   );
   const sortedPlayers = players.slice().sort((a, b) => b.progress - a.progress || b.wpm - a.wpm);
-  const leader = sortedPlayers[0];
   const canHost = activeRace?.host_id === userId || !isSupabaseConfigured;
   const allReady = players.length > 0 && players.every((player) => player.ready);
   const raceLive = activeRace?.status === "live";
@@ -84,9 +83,10 @@ export function RaceRoom() {
         return;
       }
 
+      // TypeScript error fix applied here (as any)
       const { data, error } = await supabase
         .from("race_players")
-        .upsert(playerPayload, { onConflict: "race_id,user_id" })
+        .upsert(playerPayload as any, { onConflict: "race_id,user_id" })
         .select("*");
 
       if (error) {
