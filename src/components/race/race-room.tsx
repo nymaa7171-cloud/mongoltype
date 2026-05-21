@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Copy, Flag, Play, Radio, RefreshCcw, Search, Sparkles, Trophy, Users } from "lucide-react";
+import { Copy, Play, Radio, RefreshCcw, Search, Sparkles, Trophy, Users } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { CountdownRing } from "@/components/race/countdown-ring";
@@ -32,7 +32,7 @@ export function RaceRoom() {
   const setPlayers = useRaceStore((state) => state.setPlayers);
   const updatePlayer = useRaceStore((state) => state.updatePlayer);
   const regeneratePrompt = useRaceStore((state) => state.regeneratePrompt);
-  const resetRace = useRaceStore((state) => state.resetRace);
+  
   const [difficulty, setDifficulty] = useState<Difficulty>("medium");
   const [joinCode, setJoinCode] = useState("");
   const [busy, setBusy] = useState(false);
@@ -83,7 +83,7 @@ export function RaceRoom() {
         return;
       }
 
-      // TypeScript error fix applied here (as any)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const { data, error } = await supabase
         .from("race_players")
         .upsert(playerPayload as any, { onConflict: "race_id,user_id" })
